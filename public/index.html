@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retail App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Retail Launch Store</h1>
+      <p>Discover curated products and checkout with instant pricing.</p>
+    </header>
+
+    <main class="layout">
+      <section>
+        <h2>Products</h2>
+        <div id="product-grid" class="grid"></div>
+      </section>
+
+      <aside class="summary">
+        <h2>Cart Summary</h2>
+        <div id="cart-items" class="cart-items"></div>
+        <button id="checkout-btn">Calculate Total</button>
+        <div id="totals" class="totals"></div>
+      </aside>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

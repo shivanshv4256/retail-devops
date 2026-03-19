@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-app
+  labels:
+    app: retail-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: retail-app
+  template:
+    metadata:
+      labels:
+        app: retail-app
+    spec:
+      containers:
+        - name: retail-app
+          image: ghcr.io/your-org/retail-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7000
+          env:
+            - name: PORT
+              value: "7000"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 7000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 7000
+            initialDelaySeconds: 15
+            periodSeconds: 20

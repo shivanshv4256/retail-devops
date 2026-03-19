@@ -45,6 +45,11 @@ pipeline {
                 }
             }
         }
+        stage('Test Docker') {
+    steps {
+        bat 'docker ps'
+    }
+}
 
         stage('Run Container') {
            steps {

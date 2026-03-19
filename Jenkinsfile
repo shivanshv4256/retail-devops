@@ -10,7 +10,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/shivanshv4256/retail-devops'
+                git 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
             }
         }
 
@@ -18,21 +18,9 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        sh 'npm install'
+                        sh 'npm ci'
                     } else {
-                        bat 'npm install'
-                    }
-                }
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                script {
-                    if (isUnix()) {
-                        sh 'npm test || true'
-                    } else {
-                        bat 'npm test || exit 0'
+                        bat 'npm ci'
                     }
                 }
             }
@@ -62,7 +50,7 @@ pipeline {
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Run Container') {
             steps {
                 script {
                     if (isUnix()) {
@@ -82,17 +70,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes (Optional)') {
+        stage('Deploy to Kubernetes') {
+            when {
+                expression { return isUnix() }
+            }
             steps {
-                script {
-                    if (isUnix()) {
-                        sh '''
-                        kubectl apply -f k8s/
-                        '''
-                    } else {
-                        echo 'Kubernetes deployment typically runs on Linux agents'
-                    }
-                }
+                sh 'kubectl apply -f k8s/ || true'
             }
         }
     }

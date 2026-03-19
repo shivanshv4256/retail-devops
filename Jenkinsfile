@@ -8,11 +8,7 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/shivanshv4256/retail-devops'
-            }
-        }
+        
 
         stage('Install Dependencies') {
             steps {

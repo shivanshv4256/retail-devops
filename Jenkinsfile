@@ -53,13 +53,13 @@ pipeline {
                 sh '''
                 docker stop ${CONTAINER_NAME} || true
                 docker rm ${CONTAINER_NAME} || true
-                docker run -d -p 7000:7000 --env-file .env --name ${CONTAINER_NAME} ${IMAGE_NAME}
+                docker run -d -p 7000:7000 --name ${CONTAINER_NAME} ${IMAGE_NAME}
                 '''
             } else {
                 bat '''
                 docker stop %CONTAINER_NAME% || exit 0
                 docker rm %CONTAINER_NAME% || exit 0
-                docker run -d -p 7000:7000 --env-file .env --name %CONTAINER_NAME% %IMAGE_NAME%
+                docker run -d -p 7000:7000 --name %CONTAINER_NAME% %IMAGE_NAME%
                 '''
             }
         }

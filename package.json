@@ -5,9 +5,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "test": "echo \"No tests yet\""
-  },
+  "dev": "tsx src/index.ts",
+  "build": "tsc",
+  "start": "node dist/index.js",
+  "test": "echo \"No tests yet\""
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
